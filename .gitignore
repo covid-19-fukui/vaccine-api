@@ -72,3 +72,6 @@ data
 dist
 
 .runtimeconfig.json
+
+# mac
+.DS_Store

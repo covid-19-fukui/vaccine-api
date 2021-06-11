@@ -22,8 +22,8 @@ export default class FireStoreConfig {
    *
    * @returns FireStore
    */
-  getUsers(): admin.firestore.CollectionReference<admin.firestore.DocumentData> {
-    const collectionName = this.firestoreCollectionsConfig.users;
+  getVaccination(): admin.firestore.CollectionReference<admin.firestore.DocumentData> {
+    const collectionName = this.firestoreCollectionsConfig.vaccination;
     return this.firestore.collection(collectionName);
   }
 }

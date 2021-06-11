@@ -9,8 +9,8 @@ on:
         default: warning
 
 env:
-  FIREBASE_TOKEN: ${{ secrets.STG_FIREBASE_TOKEN }}
-  PROJECT_ID: "ii-ne-bot-staging"
+  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  PROJECT_ID: "covid19-fukui-316005"
 
 jobs:
   deploy-stg:

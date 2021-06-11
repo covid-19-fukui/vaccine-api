@@ -1,0 +1,144 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "ワクチン接種状況取得API",
+    "description": "新型コロナワクチンの接種状況の統計データを福井県を軸に集計したデータを提供",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "schemas": {
+      "InfoResponse": {
+        "type": "object",
+        "properties": {
+          "datetime": {
+            "type": "string",
+            "example": "2021-06-11T21:18:36+09:00"
+          },
+          "prefectureCode": { "type": "number", "example": "18" }
+        },
+        "required": ["datetime", "prefectureCode"]
+      },
+      "VaccineResponse": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "example": "2021-06-10" },
+          "countFirst": { "type": "number", "example": 1635 },
+          "countSecond": { "type": "number", "example": 795 },
+          "percentageFirst": {
+            "type": "number",
+            "example": 10.720296859741211
+          },
+          "percentageSecond": {
+            "type": "number",
+            "example": 1.9734556674957275
+          },
+          "countMaleFirst": { "type": "number", "example": 710 },
+          "countMaleSecond": { "type": "number", "example": 342 },
+          "percentageMaleFirst": {
+            "type": "number",
+            "example": 8.994806289672852
+          },
+          "percentageMaleSecond": {
+            "type": "number",
+            "example": 1.4131945371627808
+          },
+          "countFemaleFirst": { "type": "number", "example": 925 },
+          "countFemaleSecond": { "type": "number", "example": 452 },
+          "percentageFemaleFirst": {
+            "type": "number",
+            "example": 12.296463966369629
+          },
+          "percentageFemaleSecond": {
+            "type": "number",
+            "example": 2.4895737171173096
+          },
+          "countOldFirst": { "type": "number", "example": 1579 },
+          "countOldSecond": { "type": "number", "example": 780 },
+          "percentageOldFirst": {
+            "type": "number",
+            "example": 34.7356071472168
+          },
+          "percentageOldSecond": {
+            "type": "number",
+            "example": 6.338403701782227
+          },
+          "countYoungFirst": { "type": "number", "example": 56 },
+          "countYoungSecond": { "type": "number", "example": 14 },
+          "percentageYoungFirst": {
+            "type": "number",
+            "example": 0.48504239320755005
+          },
+          "percentageYoungSecond": {
+            "type": "number",
+            "example": 0.11048593372106552
+          }
+        },
+        "required": [
+          "date",
+          "countFirst",
+          "countSecond",
+          "percentageFirst",
+          "percentageSecond",
+          "countMaleFirst",
+          "countMaleSecond",
+          "percentageMaleFirst",
+          "percentageMaleSecond",
+          "countFemaleFirst",
+          "countFemaleSecond",
+          "percentageFemaleFirst",
+          "percentageFemaleSecond",
+          "countOldFirst",
+          "countOldSecond",
+          "percentageOldFirst",
+          "percentageOldSecond",
+          "countYoungFirst",
+          "countYoungSecond",
+          "percentageYoungFirst",
+          "percentageYoungSecond"
+        ]
+      },
+      "VaccineApiResponse": {
+        "type": "object",
+        "properties": {
+          "info": { "$ref": "#/components/schemas/InfoResponse" },
+          "vaccination": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/VaccineResponse" }
+          }
+        },
+        "required": ["info", "vaccination"]
+      }
+    }
+  },
+  "paths": {
+    "/v1/vaccine/{prefectureId}": {
+      "get": {
+        "operationId": "VaccineController_getVaccine",
+        "parameters": [
+          {
+            "name": "prefectureId",
+            "required": true,
+            "in": "path",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ワクチン接種状況の取得が成功した場合、レスポンスとして返す。",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/VaccineApiResponse" }
+              }
+            }
+          }
+        },
+        "tags": ["v1"]
+      }
+    }
+  },
+  "host": "https://us-central1-covid19-fukui-316005.cloudfunctions.net",
+  "basePath": "/api"
+}

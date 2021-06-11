@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import UserModule from './user.module';
+import { VaccineModule } from './vaccine.module';
 import * as express from 'express';
 import * as functions from 'firebase-functions';
 import * as helmet from 'helmet';
@@ -19,7 +19,7 @@ const server = express();
  */
 export const createNestServer = async (expressInstance: express.Express) => {
   const app = await NestFactory.create(
-    UserModule,
+    VaccineModule,
     new ExpressAdapter(expressInstance),
   );
 
