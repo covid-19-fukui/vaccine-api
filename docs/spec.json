@@ -22,7 +22,11 @@
             "type": "string",
             "example": "2021-06-11T21:18:36+09:00"
           },
-          "prefectureCode": { "type": "number", "example": "18" }
+          "prefectureCode": {
+            "description": "都道府県コード",
+            "type": "number",
+            "example": "18"
+          }
         },
         "required": ["datetime", "prefectureCode"]
       },
