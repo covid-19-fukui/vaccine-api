@@ -19,6 +19,7 @@
         "type": "object",
         "properties": {
           "datetime": {
+            "description": "リクエスト日時",
             "type": "string",
             "example": "2021-06-11T21:18:36+09:00"
           },
@@ -34,7 +35,7 @@
         "type": "object",
         "properties": {
           "date": {
-            "description": "アクセス日時",
+            "description": "集計対象日",
             "type": "string",
             "example": "2021-06-10"
           },
