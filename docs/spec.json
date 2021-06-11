@@ -29,54 +29,108 @@
       "VaccineResponse": {
         "type": "object",
         "properties": {
-          "date": { "type": "string", "example": "2021-06-10" },
-          "countFirst": { "type": "number", "example": 1635 },
-          "countSecond": { "type": "number", "example": 795 },
+          "date": {
+            "description": "アクセス日時",
+            "type": "string",
+            "example": "2021-06-10"
+          },
+          "countFirst": {
+            "description": "一回目の接種人数(当日分)",
+            "type": "number",
+            "example": 1635
+          },
+          "countSecond": {
+            "description": "二回目の接種人数(当日分)",
+            "type": "number",
+            "example": 795
+          },
           "percentageFirst": {
+            "description": "一回目の接種率(累計)",
             "type": "number",
             "example": 10.720296859741211
           },
           "percentageSecond": {
+            "description": "二回目の接種率(累計)",
             "type": "number",
             "example": 1.9734556674957275
           },
-          "countMaleFirst": { "type": "number", "example": 710 },
-          "countMaleSecond": { "type": "number", "example": 342 },
+          "countMaleFirst": {
+            "description": "男性の場合の一回目の接種人数(当日分)",
+            "type": "number",
+            "example": 710
+          },
+          "countMaleSecond": {
+            "description": "男性の場合の二回目の接種人数(当日分)",
+            "type": "number",
+            "example": 342
+          },
           "percentageMaleFirst": {
+            "description": "男性の場合の一回目の接種率(累計)",
             "type": "number",
             "example": 8.994806289672852
           },
           "percentageMaleSecond": {
+            "description": "男性の場合の二回目の接種率(累計)",
             "type": "number",
             "example": 1.4131945371627808
           },
-          "countFemaleFirst": { "type": "number", "example": 925 },
-          "countFemaleSecond": { "type": "number", "example": 452 },
+          "countFemaleFirst": {
+            "description": "女性の場合の一回目の接種人数(当日分)",
+            "type": "number",
+            "example": 925
+          },
+          "countFemaleSecond": {
+            "description": "女性の場合の二回目の接種人数(当日分)",
+            "type": "number",
+            "example": 452
+          },
           "percentageFemaleFirst": {
+            "description": "女性の場合の一回目の接種率(累計)",
             "type": "number",
             "example": 12.296463966369629
           },
           "percentageFemaleSecond": {
+            "description": "女性の場合の二回目の接種率(累計)",
             "type": "number",
             "example": 2.4895737171173096
           },
-          "countOldFirst": { "type": "number", "example": 1579 },
-          "countOldSecond": { "type": "number", "example": 780 },
+          "countOldFirst": {
+            "description": "65歳以上の場合の一回目の接種人数(当日分)",
+            "type": "number",
+            "example": 1579
+          },
+          "countOldSecond": {
+            "description": "65歳以上の場合の二回目の接種人数(当日分)",
+            "type": "number",
+            "example": 780
+          },
           "percentageOldFirst": {
+            "description": "65歳以上の場合の一回目の接種率(累計)",
             "type": "number",
             "example": 34.7356071472168
           },
           "percentageOldSecond": {
+            "description": "65歳以上の場合の二回目の接種率(累計)",
             "type": "number",
             "example": 6.338403701782227
           },
-          "countYoungFirst": { "type": "number", "example": 56 },
-          "countYoungSecond": { "type": "number", "example": 14 },
+          "countYoungFirst": {
+            "description": "64歳以下の場合の一回目の接種人数(当日分)",
+            "type": "number",
+            "example": 56
+          },
+          "countYoungSecond": {
+            "description": "64歳以下の場合の二回目の接種人数(当日分)",
+            "type": "number",
+            "example": 14
+          },
           "percentageYoungFirst": {
+            "description": "64歳以下の場合の一回目の接種率(累計)",
             "type": "number",
             "example": 0.48504239320755005
           },
           "percentageYoungSecond": {
+            "description": "64歳以下の場合の二回目の接種率(累計)",
             "type": "number",
             "example": 0.11048593372106552
           }
