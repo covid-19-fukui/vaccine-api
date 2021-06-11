@@ -7,7 +7,12 @@
     "contact": {}
   },
   "tags": [],
-  "servers": [],
+  "servers": [
+    {
+      "url": "https://us-central1-covid19-fukui-316005.cloudfunctions.net/api",
+      "description": "本番環境"
+    }
+  ],
   "components": {
     "schemas": {
       "InfoResponse": {
@@ -139,6 +144,5 @@
       }
     }
   },
-  "host": "https://us-central1-covid19-fukui-316005.cloudfunctions.net",
   "basePath": "/api"
 }
