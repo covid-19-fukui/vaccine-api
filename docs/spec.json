@@ -178,6 +178,20 @@
           }
         },
         "required": ["info", "vaccination"]
+      },
+      "VaccineApiResponse": {
+        "type": "object",
+        "properties": {
+          "info": {
+            "description": "リクエスト情報",
+            "allOf": [{ "$ref": "#/components/schemas/InfoResponse" }]
+          },
+          "vaccination": {
+            "description": "ワクチン接種状況",
+            "allOf": [{ "$ref": "#/components/schemas/VaccineResponse" }]
+          }
+        },
+        "required": ["info", "vaccination"]
       }
     }
   },
@@ -236,9 +250,7 @@
             "description": "日付指定でワクチン接種状況の取得が成功した場合、レスポンスとして返す",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/VaccineListApiResponse"
-                }
+                "schema": { "$ref": "#/components/schemas/VaccineApiResponse" }
               }
             }
           }

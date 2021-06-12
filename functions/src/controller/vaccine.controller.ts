@@ -49,7 +49,7 @@ export class VaccineController {
     status: 200,
     description:
       '日付指定でワクチン接種状況の取得が成功した場合、レスポンスとして返す',
-    type: VaccineListApiResponse,
+    type: VaccineApiResponse,
   })
   async getVaccine(
     @Param() paramter: VaccineParamter,
