@@ -5,7 +5,7 @@
       "queryScope": "COLLECTION",
       "fields": [
         {
-          "fieldPath": "prefecutre",
+          "fieldPath": "prefecture",
           "order": "ASCENDING"
         },
         {
