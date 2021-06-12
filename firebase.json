@@ -14,7 +14,7 @@
     "public": "public",
     "rewrites": [
       {
-        "source": "/api/",
+        "source": "/api/v1/vaccine/**",
         "function": "api"
       }
     ],

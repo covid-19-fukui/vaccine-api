@@ -10,8 +10,8 @@ import VaccineQuery from './dto/vaccine.query';
 /**
  * コントローラ
  */
-@Controller('v1/vaccine')
-@ApiTags('v1/vaccine')
+@Controller('api/v1/vaccine')
+@ApiTags('api/v1/vaccine')
 @UseFilters(HttpExceptionFilter)
 export class VaccineController {
   /**
