@@ -13,8 +13,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
   /**
    * 例外を全て受け付けるハンドラー
    *
-   * @param exception 例外
-   * @param host host
+   * @param {HttpException} exception 例外
+   * @param {ArgumentsHost} host host
    */
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
@@ -32,8 +32,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
   /**
    * エラーレスポンスのタイトルを取得する
    *
-   * @param status ステータス
-   * @returns　タイトル
+   * @param {number} status ステータス
+   * @returns {string} タイトル
    */
   private getTitle(status: number): string {
     switch (status) {

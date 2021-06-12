@@ -14,7 +14,7 @@ export class VaccineService {
   /**
    * コンストラクタ
    *
-   * @param {VaccineFireStoreRepository} userFireStoreRepository
+   * @param {VaccineFireStoreRepository} vaccineFireStoreRepository ワクチン接種状況を取得するfirestoreのリポジトリ
    */
   constructor(
     private readonly vaccineFireStoreRepository: VaccineFireStoreRepository,
@@ -23,16 +23,16 @@ export class VaccineService {
   /**
    * ワクチン接種状況の取得
    *
-   * @param {string} prefectureId 都道府県コード
+   * @param {string} prefectureCode 都道府県コード
    * @returns {Promise<VaccineApiResponse>} ワクチン接種状況
    */
-  async getVaccine(prefectureId: string): Promise<VaccineApiResponse> {
-    const now = moment().tz('Asia/Tokyo').format();
+  async getVaccine(prefectureCode: string): Promise<VaccineApiResponse> {
+    const now = this.getNow();
 
-    const prefectureCode = this.convertStringToNum(prefectureId);
+    const prefectureCodeNum = this.convertStringToNum(prefectureCode);
 
     const vaccineEntity: VaccineEntity[] = await this.vaccineFireStoreRepository.getVaccine(
-      prefectureCode,
+      prefectureCodeNum,
     );
 
     const vaccineResponse: VaccineResponse[] = vaccineEntity.map((entity) =>
@@ -40,26 +40,35 @@ export class VaccineService {
     );
 
     return new VaccineApiResponse(
-      new InfoResponse(now, prefectureCode),
+      new InfoResponse(now, prefectureCodeNum),
       vaccineResponse,
     );
   }
 
   /**
-   * 文字列型の都道府県コード
+   * 現在時刻を取得する
    *
-   * @param {string} prefectureId
-   * @returns {number} 数値型の都道府県コード
+   * @returns {string} 文字列化した現在時刻
    */
-  private convertStringToNum(prefectureId: string): number {
-    return Number(prefectureId);
+  private getNow(): string {
+    return moment().tz('Asia/Tokyo').format();
   }
 
   /**
+   * 文字列型の都道府県コード
    *
+   * @param {string} prefectureCode
+   * @returns {number} 数値型の都道府県コード
+   */
+  private convertStringToNum(prefectureCode: string): number {
+    return Number(prefectureCode);
+  }
+
+  /**
+   * ワクチン接種状況のレスポンスクラスを生成する
    *
-   * @param {VaccineEntity} vaccineEntity
-   * @returns {VaccineResponse}
+   * @param {VaccineEntity} vaccineEntity firebaseから取得したワクチン接種状況
+   * @returns {VaccineResponse} レスポンスクラス
    */
   private buildVaccineResponse(vaccineEntity: VaccineEntity): VaccineResponse {
     const date = this.formatDate(vaccineEntity.date.toDate());
@@ -89,11 +98,16 @@ export class VaccineService {
     );
   }
 
-  // 日付をYYYY-MM-DDの書式で返すメソッド
-  private formatDate(dt: Date): string {
-    var y = dt.getFullYear();
-    var m = ('00' + (dt.getMonth() + 1)).slice(-2);
-    var d = ('00' + dt.getDate()).slice(-2);
-    return y + '-' + m + '-' + d;
+  /**
+   * 日付をYYYY-MM-DDの書式で返すメソッド
+   *
+   * @param {Date} date Date
+   * @returns {string} YYYY-MM-DD形式の日付
+   */
+  private formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = ('00' + (date.getMonth() + 1)).slice(-2);
+    const day = ('00' + date.getDate()).slice(-2);
+    return year + '-' + month + '-' + day;
   }
 }

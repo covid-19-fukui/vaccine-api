@@ -5,14 +5,14 @@ export default class VaccineParamter {
   @ApiProperty({ example: 18, description: '都道府県コード(福井県のみ対応)' })
   @IsNotEmpty()
   @IsNumberString()
-  prefectureId: string;
+  prefectureCode: string;
 
   /**
    * コンストラクタ
    *
-   * @param prefectureId prefectureId
+   * @param prefectureCode prefectureCode
    */
-  constructor(prefectureId: string) {
-    this.prefectureId = prefectureId;
+  constructor(prefectureCode: string) {
+    this.prefectureCode = prefectureCode;
   }
 }

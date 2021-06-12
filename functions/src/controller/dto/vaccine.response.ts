@@ -98,6 +98,31 @@ export default class VaccineResponse {
   })
   readonly percentageYoungSecond: number;
 
+  /**
+   * コンストラクタ
+   *
+   * @param {string} date 接種状況の集計日
+   * @param {number} countFirst 一回目の接種人数(当日分)
+   * @param {number} countSecond 二回目の接種人数(当日分)
+   * @param {number} percentageFirst 一回目の接種率(累計)
+   * @param {number} percentageSecond 二回目の接種率(累計)
+   * @param {number} countMaleFirst 男性の場合の一回目の接種人数(当日分)
+   * @param {number} countMaleSecond 男性の場合の二回目の接種人数(当日分)
+   * @param {number} percentageMaleFirst 男性の場合の一回目の接種率(累計)
+   * @param {number} percentageMaleSecond 男性の場合の二回目の接種率(累計)
+   * @param {number} countFemaleFirst 女性の場合の一回目の接種人数(当日分)
+   * @param {number} countFemaleSecond 女性の場合の二回目の接種人数(当日分)
+   * @param {number} percentageFemaleFirst 女性の場合の一回目の接種率(累計)
+   * @param {number} percentageFemaleSecond 女性の場合の二回目の接種率(累計)
+   * @param {number} countOldFirst 65歳以上の場合の一回目の接種人数(当日分)
+   * @param {number} countOldSecond 65歳以上の場合の二回目の接種人数(当日分)
+   * @param {number} percentageOldFirst 65歳以上の場合の一回目の接種率(累計)
+   * @param {number} percentageOldSecond 65歳以上の場合の二回目の接種率(累計)
+   * @param {number} countYoungFirst 64歳以下の場合の一回目の接種人数(当日分)
+   * @param {number} countYoungSecond 64歳以下の場合の二回目の接種人数(当日分)
+   * @param {number} percentageYoungFirst 64歳以下の場合の一回目の接種率(累計)
+   * @param {number} percentageYoungSecond 64歳以下の場合の二回目の接種率(累計)
+   */
   constructor(
     date: string,
     countFirst: number,

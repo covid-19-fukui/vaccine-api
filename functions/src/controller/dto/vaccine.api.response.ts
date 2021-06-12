@@ -14,6 +14,7 @@ export default class VaccineApiResponse {
   /**
    * コンストラクタ
    *
+   * @param info リクエスト情報
    * @param vaccination ワクチン接種状況
    */
   constructor(info: InfoResponse, vaccination: VaccineResponse[]) {

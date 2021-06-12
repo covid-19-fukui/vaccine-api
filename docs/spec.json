@@ -178,12 +178,12 @@
     }
   },
   "paths": {
-    "/v1/vaccine/{prefectureId}": {
+    "/v1/vaccine/{prefectureCode}": {
       "get": {
         "operationId": "VaccineController_getVaccine",
         "parameters": [
           {
-            "name": "prefectureId",
+            "name": "prefectureCode",
             "required": true,
             "in": "path",
             "schema": { "type": "string" }

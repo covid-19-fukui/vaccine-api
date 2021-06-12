@@ -15,16 +15,16 @@ export class VaccineController {
   /**
    * コンストラクタ
    *
-   * @param vaccineService サービス
+   * @param {VaccineService} vaccineService サービス
    */
   constructor(private readonly vaccineService: VaccineService) {}
   /**
    * ワクチン接種状況の取得
    *
-   * @param paramter パラメータ
-   * @returns ワクチン接種状況のレスポンス
+   * @param {VaccineParamter} paramter パラメータ
+   * @returns {Promise<VaccineApiResponse>} ワクチン接種状況のレスポンス
    */
-  @Get('vaccine/:prefectureId')
+  @Get('vaccine/:prefectureCode')
   @ApiCreatedResponse({
     status: 200,
     description: 'ワクチン接種状況の取得が成功した場合、レスポンスとして返す。',
@@ -33,6 +33,6 @@ export class VaccineController {
   async getVaccine(
     @Param() paramter: VaccineParamter,
   ): Promise<VaccineApiResponse> {
-    return this.vaccineService.getVaccine(paramter.prefectureId);
+    return this.vaccineService.getVaccine(paramter.prefectureCode);
   }
 }

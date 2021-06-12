@@ -73,22 +73,22 @@ export class VaccineFireStoreRepository {
   /**
    * コンストラクタ
    *
-   * @param fireStoreConfig FireStoreの設定
+   * @param {FireStoreConfig} fireStoreConfig FireStoreの設定
    */
   constructor(private readonly fireStoreConfig: FireStoreConfig) {}
 
   /**
-   * ワクチン接種状況の取得
+   * ワクチン接種状況の一覧取得
    *
-   * @param prefetcureId 都道府県コード
-   * @returns 都道府県コード
+   * @param {number} prefetcureCode 都道府県コード
+   * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
    */
-  async getVaccine(prefectureId: number): Promise<VaccineEntity[]> {
+  async getVaccine(prefectureCode: number): Promise<VaccineEntity[]> {
     return (
       await this.fireStoreConfig
         .getVaccination()
         .withConverter(this.VACCINE_CONVERTER)
-        .where('prefecture', '==', prefectureId)
+        .where('prefecture', '==', prefectureCode)
         .orderBy('date', 'desc')
         .limit(90)
         .get()

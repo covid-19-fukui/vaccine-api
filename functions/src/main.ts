@@ -3,6 +3,9 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { VaccineModule } from './vaccine.module';
 
+/**
+ * swagger作成
+ */
 async function bootstrap() {
   const app = await NestFactory.create(VaccineModule);
 
