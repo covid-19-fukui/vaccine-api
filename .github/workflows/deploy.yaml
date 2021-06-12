@@ -13,7 +13,7 @@ env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
 jobs:
-  deploy-stg:
+  deploy:
     runs-on: ubuntu-latest
 
     strategy:
