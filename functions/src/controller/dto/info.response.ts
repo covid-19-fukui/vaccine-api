@@ -10,6 +10,12 @@ export default class InfoResponse {
   @ApiProperty({ example: '18', description: '都道府県コード' })
   readonly prefectureCode: number;
 
+  /**
+   * コンストラクタ
+   *
+   * @param {string} datetime
+   * @param {number} prefectureCode
+   */
   constructor(datetime: string, prefectureCode: number) {
     this.datetime = datetime;
     this.prefectureCode = prefectureCode;

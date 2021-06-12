@@ -10,7 +10,7 @@ export default class VaccineParamter {
   /**
    * コンストラクタ
    *
-   * @param prefectureCode prefectureCode
+   * @param {string} prefectureCode prefectureCode
    */
   constructor(prefectureCode: string) {
     this.prefectureCode = prefectureCode;
