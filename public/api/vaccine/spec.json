@@ -8,10 +8,7 @@
   },
   "tags": [],
   "servers": [
-    {
-      "url": "https://us-central1-covid19-fukui-316005.cloudfunctions.net/api",
-      "description": "本番環境"
-    }
+    { "url": "https://dev.fooqoo56.com/", "description": "本番環境" }
   ],
   "components": {
     "schemas": {
@@ -196,7 +193,7 @@
     }
   },
   "paths": {
-    "/v1/vaccine/search": {
+    "/api/v1/vaccine/search": {
       "get": {
         "operationId": "VaccineController_getVaccines",
         "parameters": [
@@ -229,10 +226,10 @@
             }
           }
         },
-        "tags": ["v1/vaccine"]
+        "tags": ["api/v1/vaccine"]
       }
     },
-    "/v1/vaccine/{prefectureCode}/{date}": {
+    "/api/v1/vaccine/{prefectureCode}/{date}": {
       "get": {
         "operationId": "VaccineController_getVaccine",
         "parameters": [
@@ -263,7 +260,7 @@
             }
           }
         },
-        "tags": ["v1/vaccine"]
+        "tags": ["api/v1/vaccine"]
       }
     }
   }
