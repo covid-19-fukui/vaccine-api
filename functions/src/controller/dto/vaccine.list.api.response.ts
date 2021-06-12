@@ -4,20 +4,20 @@ import VaccineResponse from './vaccine.response';
 /**
  * ユーザ取得APIのレスポンス
  */
-export default class VaccineApiResponse {
+export default class VaccineListApiResponse {
   @ApiProperty({ description: 'リクエスト情報' })
   readonly info: InfoResponse;
 
-  @ApiProperty({ description: 'ワクチン接種状況' })
-  readonly vaccination: VaccineResponse;
+  @ApiProperty({ type: [VaccineResponse], description: 'ワクチン接種状況' })
+  readonly vaccination: VaccineResponse[];
 
   /**
    * コンストラクタ
    *
    * @param {InfoResponse} info リクエスト情報
-   * @param {VaccineResponse} vaccination ワクチン接種状況
+   * @param {VaccineResponse[]} vaccination ワクチン接種状況
    */
-  constructor(info: InfoResponse, vaccination: VaccineResponse) {
+  constructor(info: InfoResponse, vaccination: VaccineResponse[]) {
     this.info = info;
     this.vaccination = vaccination;
   }

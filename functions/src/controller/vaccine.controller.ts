@@ -1,15 +1,17 @@
-import { Controller, Get, Param, UseFilters } from '@nestjs/common';
+import { Controller, Get, Param, Query, UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from './http.exception.filter';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
-import VaccineApiResponse from './dto/vaccine.api.response';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import VaccineListApiResponse from './dto/vaccine.list.api.response';
 import VaccineParamter from './dto/vaccine.paramter';
-import { VaccineService } from 'src/service/vaccine.service';
+import { VaccineService } from '../service/vaccine.service';
+import VaccineApiResponse from './dto/vaccine.api.response';
+import VaccineQuery from './dto/vaccine.query';
 
 /**
  * コントローラ
  */
-@Controller('v1')
-@ApiTags('v1')
+@Controller('v1/vaccine')
+@ApiTags('v1/vaccine')
 @UseFilters(HttpExceptionFilter)
 export class VaccineController {
   /**
@@ -19,20 +21,42 @@ export class VaccineController {
    */
   constructor(private readonly vaccineService: VaccineService) {}
   /**
+   * ワクチン接種状況の検索
+   *
+   * @param {VaccineParamter} paramter パラメータ
+   * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況のレスポンス
+   */
+  @Get('search')
+  @ApiOkResponse({
+    status: 200,
+    description: 'ワクチン接種状況の取得が成功した場合、レスポンスとして返す',
+    type: VaccineListApiResponse,
+  })
+  async getVaccines(
+    @Query() query: VaccineQuery,
+  ): Promise<VaccineListApiResponse> {
+    return this.vaccineService.findVaccines(query);
+  }
+
+  /**
    * ワクチン接種状況の取得
    *
    * @param {VaccineParamter} paramter パラメータ
-   * @returns {Promise<VaccineApiResponse>} ワクチン接種状況のレスポンス
+   * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況のレスポンス
    */
-  @Get('vaccine/:prefectureCode')
-  @ApiCreatedResponse({
+  @Get(':prefectureCode/:date')
+  @ApiOkResponse({
     status: 200,
-    description: 'ワクチン接種状況の取得が成功した場合、レスポンスとして返す。',
-    type: VaccineApiResponse,
+    description:
+      '日付指定でワクチン接種状況の取得が成功した場合、レスポンスとして返す',
+    type: VaccineListApiResponse,
   })
   async getVaccine(
     @Param() paramter: VaccineParamter,
   ): Promise<VaccineApiResponse> {
-    return this.vaccineService.getVaccine(paramter.prefectureCode);
+    return this.vaccineService.getVaccine(
+      paramter.prefectureCode,
+      paramter.date,
+    );
   }
 }

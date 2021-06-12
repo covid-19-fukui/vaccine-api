@@ -19,14 +19,14 @@
         "type": "object",
         "properties": {
           "datetime": {
-            "description": "リクエスト日時",
             "type": "string",
-            "example": "2021-06-11T21:18:36+09:00"
+            "example": "2021-06-11T21:18:36+09:00",
+            "description": "リクエスト日時"
           },
           "prefectureCode": {
-            "description": "都道府県コード",
             "type": "number",
-            "example": "18"
+            "example": "18",
+            "description": "都道府県コード"
           }
         },
         "required": ["datetime", "prefectureCode"]
@@ -35,109 +35,109 @@
         "type": "object",
         "properties": {
           "date": {
-            "description": "集計対象日",
             "type": "string",
-            "example": "2021-06-10"
+            "example": "2021-06-10",
+            "description": "接種状況の集計日"
           },
           "countFirst": {
-            "description": "一回目の接種人数(当日分)",
             "type": "number",
-            "example": 1635
+            "example": 1635,
+            "description": "一回目の接種人数(当日分)"
           },
           "countSecond": {
-            "description": "二回目の接種人数(当日分)",
             "type": "number",
-            "example": 795
+            "example": 795,
+            "description": "二回目の接種人数(当日分)"
           },
           "percentageFirst": {
-            "description": "一回目の接種率(累計)",
             "type": "number",
-            "example": 10.720296859741211
+            "example": 10.720296859741211,
+            "description": "一回目の接種率(累計)"
           },
           "percentageSecond": {
-            "description": "二回目の接種率(累計)",
             "type": "number",
-            "example": 1.9734556674957275
+            "example": 1.9734556674957275,
+            "description": "二回目の接種率(累計)"
           },
           "countMaleFirst": {
-            "description": "男性の場合の一回目の接種人数(当日分)",
             "type": "number",
-            "example": 710
+            "example": 710,
+            "description": "男性の場合の一回目の接種人数(当日分)"
           },
           "countMaleSecond": {
-            "description": "男性の場合の二回目の接種人数(当日分)",
             "type": "number",
-            "example": 342
+            "example": 342,
+            "description": "男性の場合の二回目の接種人数(当日分)"
           },
           "percentageMaleFirst": {
-            "description": "男性の場合の一回目の接種率(累計)",
             "type": "number",
-            "example": 8.994806289672852
+            "example": 8.994806289672852,
+            "description": "男性の場合の一回目の接種率(累計)"
           },
           "percentageMaleSecond": {
-            "description": "男性の場合の二回目の接種率(累計)",
             "type": "number",
-            "example": 1.4131945371627808
+            "example": 1.4131945371627808,
+            "description": "男性の場合の二回目の接種率(累計)"
           },
           "countFemaleFirst": {
-            "description": "女性の場合の一回目の接種人数(当日分)",
             "type": "number",
-            "example": 925
+            "example": 925,
+            "description": "女性の場合の一回目の接種人数(当日分)"
           },
           "countFemaleSecond": {
-            "description": "女性の場合の二回目の接種人数(当日分)",
             "type": "number",
-            "example": 452
+            "example": 452,
+            "description": "女性の場合の二回目の接種人数(当日分)"
           },
           "percentageFemaleFirst": {
-            "description": "女性の場合の一回目の接種率(累計)",
             "type": "number",
-            "example": 12.296463966369629
+            "example": 12.296463966369629,
+            "description": "女性の場合の一回目の接種率(累計)"
           },
           "percentageFemaleSecond": {
-            "description": "女性の場合の二回目の接種率(累計)",
             "type": "number",
-            "example": 2.4895737171173096
+            "example": 2.4895737171173096,
+            "description": "女性の場合の二回目の接種率(累計)"
           },
           "countOldFirst": {
-            "description": "65歳以上の場合の一回目の接種人数(当日分)",
             "type": "number",
-            "example": 1579
+            "example": 1579,
+            "description": "65歳以上の場合の一回目の接種人数(当日分)"
           },
           "countOldSecond": {
-            "description": "65歳以上の場合の二回目の接種人数(当日分)",
             "type": "number",
-            "example": 780
+            "example": 780,
+            "description": "65歳以上の場合の二回目の接種人数(当日分)"
           },
           "percentageOldFirst": {
-            "description": "65歳以上の場合の一回目の接種率(累計)",
             "type": "number",
-            "example": 34.7356071472168
+            "example": 34.7356071472168,
+            "description": "65歳以上の場合の一回目の接種率(累計)"
           },
           "percentageOldSecond": {
-            "description": "65歳以上の場合の二回目の接種率(累計)",
             "type": "number",
-            "example": 6.338403701782227
+            "example": 6.338403701782227,
+            "description": "65歳以上の場合の二回目の接種率(累計)"
           },
           "countYoungFirst": {
-            "description": "64歳以下の場合の一回目の接種人数(当日分)",
             "type": "number",
-            "example": 56
+            "example": 56,
+            "description": "64歳以下の場合の一回目の接種人数(当日分)"
           },
           "countYoungSecond": {
-            "description": "64歳以下の場合の二回目の接種人数(当日分)",
             "type": "number",
-            "example": 14
+            "example": 14,
+            "description": "64歳以下の場合の二回目の接種人数(当日分)"
           },
           "percentageYoungFirst": {
-            "description": "64歳以下の場合の一回目の接種率(累計)",
             "type": "number",
-            "example": 0.48504239320755005
+            "example": 0.48504239320755005,
+            "description": "64歳以下の場合の一回目の接種率(累計)"
           },
           "percentageYoungSecond": {
-            "description": "64歳以下の場合の二回目の接種率(累計)",
             "type": "number",
-            "example": 0.11048593372106552
+            "example": 0.11048593372106552,
+            "description": "64歳以下の場合の一回目の接種率(累計)"
           }
         },
         "required": [
@@ -164,11 +164,15 @@
           "percentageYoungSecond"
         ]
       },
-      "VaccineApiResponse": {
+      "VaccineListApiResponse": {
         "type": "object",
         "properties": {
-          "info": { "$ref": "#/components/schemas/InfoResponse" },
+          "info": {
+            "description": "リクエスト情報",
+            "allOf": [{ "$ref": "#/components/schemas/InfoResponse" }]
+          },
           "vaccination": {
+            "description": "ワクチン接種状況",
             "type": "array",
             "items": { "$ref": "#/components/schemas/VaccineResponse" }
           }
@@ -178,7 +182,35 @@
     }
   },
   "paths": {
-    "/v1/vaccine/{prefectureCode}": {
+    "/v1/vaccine/search": {
+      "get": {
+        "operationId": "VaccineController_getVaccines",
+        "parameters": [
+          {
+            "name": "prefectureCode",
+            "required": true,
+            "in": "query",
+            "example": 18,
+            "description": "都道府県コード(福井県のみ対応)",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ワクチン接種状況の取得が成功した場合、レスポンスとして返す",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VaccineListApiResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": ["v1/vaccine"]
+      }
+    },
+    "/v1/vaccine/{prefectureCode}/{date}": {
       "get": {
         "operationId": "VaccineController_getVaccine",
         "parameters": [
@@ -186,22 +218,33 @@
             "name": "prefectureCode",
             "required": true,
             "in": "path",
+            "example": 18,
+            "description": "都道府県コード(福井県のみ対応)",
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "date",
+            "required": true,
+            "in": "path",
+            "example": "2021-06-11",
+            "description": "ISO8601形式の日付",
             "schema": { "type": "string" }
           }
         ],
         "responses": {
           "200": {
-            "description": "ワクチン接種状況の取得が成功した場合、レスポンスとして返す。",
+            "description": "日付指定でワクチン接種状況の取得が成功した場合、レスポンスとして返す",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/VaccineApiResponse" }
+                "schema": {
+                  "$ref": "#/components/schemas/VaccineListApiResponse"
+                }
               }
             }
           }
         },
-        "tags": ["v1"]
+        "tags": ["v1/vaccine"]
       }
     }
-  },
-  "basePath": "/api"
+  }
 }

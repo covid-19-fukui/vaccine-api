@@ -1,10 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import InfoResponse from '../controller/dto/info.response';
 import VaccineResponse from '../controller/dto/vaccine.response';
 import VaccineEntity from '../repository/dto/vaccine.entity';
-import VaccineApiResponse from '../controller/dto/vaccine.api.response';
+import VaccineListApiResponse from '../controller/dto/vaccine.list.api.response';
 import { VaccineFireStoreRepository } from '../repository/vaccine.repository';
 import * as moment from 'moment-timezone';
+import VaccineApiResponse from 'src/controller/dto/vaccine.api.response';
+import VaccineQuery from '../controller/dto/vaccine.query';
+// import * as functions from 'firebase-functions';
+
+// const log = functions.logger;
 
 /**
  * ユーザを取得するサービス層
@@ -21,17 +26,21 @@ export class VaccineService {
   ) {}
 
   /**
-   * ワクチン接種状況の取得
+   * ワクチン接種状況の一覧取得
    *
    * @param {string} prefectureCode 都道府県コード
-   * @returns {Promise<VaccineApiResponse>} ワクチン接種状況
+   * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況
    */
-  async getVaccine(prefectureCode: string): Promise<VaccineApiResponse> {
+  async findVaccines(
+    vaccineQuery: VaccineQuery,
+  ): Promise<VaccineListApiResponse> {
     const now = this.getNow();
 
-    const prefectureCodeNum = this.convertStringToNum(prefectureCode);
+    const prefectureCodeNum = this.convertStringToNum(
+      vaccineQuery.prefectureCode,
+    );
 
-    const vaccineEntity: VaccineEntity[] = await this.vaccineFireStoreRepository.getVaccine(
+    const vaccineEntity: VaccineEntity[] = await this.vaccineFireStoreRepository.getVaccines(
       prefectureCodeNum,
     );
 
@@ -39,8 +48,45 @@ export class VaccineService {
       this.buildVaccineResponse(entity),
     );
 
-    return new VaccineApiResponse(
+    return new VaccineListApiResponse(
       new InfoResponse(now, prefectureCodeNum),
+      vaccineResponse,
+    );
+  }
+
+  /**
+   * ワクチン接種状況の取得
+   *
+   * @param {string} prefectureCode 都道府県コード
+   * @param {string} date 集計対象日
+   * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況
+   */
+  async getVaccine(
+    prefectureCodeString: string,
+    dateString: string,
+  ): Promise<VaccineApiResponse> {
+    const now = this.getNow();
+
+    const prefectureCode = this.convertStringToNum(prefectureCodeString);
+    const date = this.convertStringToDate(dateString);
+
+    const vaccineEntity: VaccineEntity[] = await this.vaccineFireStoreRepository.getVaccine(
+      prefectureCode,
+      date,
+    );
+
+    if (vaccineEntity.length <= 0) {
+      throw new NotFoundException(
+        `Requested vaccination data does not exist: {prefectureCode: ${prefectureCode}, date: {dateString}}`,
+      );
+    }
+
+    const vaccineResponse: VaccineResponse = vaccineEntity.map((entity) =>
+      this.buildVaccineResponse(entity),
+    )[0];
+
+    return new VaccineApiResponse(
+      new InfoResponse(now, prefectureCode),
       vaccineResponse,
     );
   }
@@ -62,6 +108,15 @@ export class VaccineService {
    */
   private convertStringToNum(prefectureCode: string): number {
     return Number(prefectureCode);
+  }
+
+  /**
+   *
+   * @param date
+   * @returns
+   */
+  private convertStringToDate(date: string): moment.Moment {
+    return moment.tz(date, 'Asia/Tokyo');
   }
 
   /**

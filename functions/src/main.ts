@@ -16,14 +16,13 @@ async function bootstrap() {
     )
     .setVersion('1.0.0')
     .addServer(
-      'https://us-central1-covid19-fukui-316005.cloudfunctions.net',
+      'https://us-central1-covid19-fukui-316005.cloudfunctions.net/api',
       '本番環境',
     )
-    .setBasePath('/api')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(5001);
 }
 bootstrap();

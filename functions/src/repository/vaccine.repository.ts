@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import FireStoreConfig from '../config/firestore.config';
 import VaccineEntity from './dto/vaccine.entity';
 import * as admin from 'firebase-admin';
+import moment from 'moment';
 
 /**
  * ユーザを取得するサービス層
@@ -83,7 +84,7 @@ export class VaccineFireStoreRepository {
    * @param {number} prefetcureCode 都道府県コード
    * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
    */
-  async getVaccine(prefectureCode: number): Promise<VaccineEntity[]> {
+  async getVaccines(prefectureCode: number): Promise<VaccineEntity[]> {
     return (
       await this.fireStoreConfig
         .getVaccination()
@@ -91,6 +92,30 @@ export class VaccineFireStoreRepository {
         .where('prefecture', '==', prefectureCode)
         .orderBy('date', 'desc')
         .limit(90)
+        .get()
+    ).docs.map((doc) => doc.data());
+  }
+
+  /**
+   * ワクチン接種状況の取得
+   *
+   * @param {number} prefetcureCode 都道府県コード
+   * @param {Date} date 日付
+   * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
+   */
+  async getVaccine(
+    prefectureCode: number,
+    date: moment.Moment,
+  ): Promise<VaccineEntity[]> {
+    return (
+      await this.fireStoreConfig
+        .getVaccination()
+        .withConverter(this.VACCINE_CONVERTER)
+        .where('prefecture', '==', prefectureCode)
+        .where('date', '>=', date.startOf('day').toDate())
+        .where('date', '<=', date.endOf('day').toDate())
+        .orderBy('date', 'desc')
+        .limit(1)
         .get()
     ).docs.map((doc) => doc.data());
   }
