@@ -1,4 +1,4 @@
-name: deploy-stg
+name: deploy
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 env:
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-  PROJECT_ID: "covid19-fukui-316005"
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
 
 jobs:
   deploy-stg:

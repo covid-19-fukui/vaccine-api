@@ -5,10 +5,10 @@ import VaccineResponse from './vaccine.response';
  * ユーザ取得APIのレスポンス
  */
 export default class VaccineApiResponse {
-  @ApiProperty()
+  @ApiProperty({ description: 'リクエスト情報' })
   readonly info: InfoResponse;
 
-  @ApiProperty({ type: [VaccineResponse] })
+  @ApiProperty({ type: [VaccineResponse], description: 'ワクチン接種状況' })
   readonly vaccination: VaccineResponse[];
 
   /**

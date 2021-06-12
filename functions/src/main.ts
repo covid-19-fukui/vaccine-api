@@ -12,6 +12,11 @@ async function bootstrap() {
       '新型コロナワクチンの接種状況の統計データを福井県を軸に集計したデータを提供',
     )
     .setVersion('1.0.0')
+    .addServer(
+      'https://us-central1-covid19-fukui-316005.cloudfunctions.net',
+      '本番環境',
+    )
+    .setBasePath('/api')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
