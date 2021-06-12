@@ -213,7 +213,7 @@
             "required": false,
             "in": "query",
             "example": 30,
-            "description": "取得日数",
+            "description": "取得日数 (1~30)",
             "schema": { "default": 30, "type": "number" }
           }
         ],

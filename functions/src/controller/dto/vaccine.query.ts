@@ -11,7 +11,7 @@ export default class VaccineQuery {
 
   @ApiProperty({
     example: 30,
-    description: '取得日数',
+    description: '取得日数 (1~30)',
     default: 30,
     required: false,
   })
