@@ -7,9 +7,9 @@ import { VaccineFireStoreRepository } from '../repository/vaccine.repository';
 import * as moment from 'moment-timezone';
 import VaccineApiResponse from 'src/controller/dto/vaccine.api.response';
 import VaccineQuery from '../controller/dto/vaccine.query';
-// import * as functions from 'firebase-functions';
+import * as functions from 'firebase-functions';
 
-// const log = functions.logger;
+const log = functions.logger;
 
 /**
  * ユーザを取得するサービス層
@@ -36,12 +36,11 @@ export class VaccineService {
   ): Promise<VaccineListApiResponse> {
     const now = this.getNow();
 
-    const prefectureCodeNum = this.convertStringToNum(
-      vaccineQuery.prefectureCode,
-    );
+    log.info(vaccineQuery);
 
     const vaccineEntity: VaccineEntity[] = await this.vaccineFireStoreRepository.getVaccines(
-      prefectureCodeNum,
+      vaccineQuery.prefectureCode,
+      vaccineQuery.count,
     );
 
     const vaccineResponse: VaccineResponse[] = vaccineEntity.map((entity) =>
@@ -49,7 +48,7 @@ export class VaccineService {
     );
 
     return new VaccineListApiResponse(
-      new InfoResponse(now, prefectureCodeNum),
+      new InfoResponse(now, vaccineQuery.prefectureCode),
       vaccineResponse,
     );
   }

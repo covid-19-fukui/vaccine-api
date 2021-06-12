@@ -206,7 +206,15 @@
             "in": "query",
             "example": 18,
             "description": "都道府県コード(福井県のみ対応)",
-            "schema": { "type": "string" }
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "count",
+            "required": false,
+            "in": "query",
+            "example": 30,
+            "description": "取得日数",
+            "schema": { "default": 30, "type": "number" }
           }
         ],
         "responses": {

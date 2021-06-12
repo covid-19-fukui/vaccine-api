@@ -25,7 +25,7 @@ export const createNestServer = async (expressInstance: express.Express) => {
 
   // ここにセキュリティについての設定を追加する
   app.use(helmet());
-  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.enableCors();
 
   console.log('the server is starting @ firebase');

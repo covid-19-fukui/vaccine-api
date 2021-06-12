@@ -82,16 +82,20 @@ export class VaccineFireStoreRepository {
    * ワクチン接種状況の一覧取得
    *
    * @param {number} prefetcureCode 都道府県コード
+   * @param {number} count 取得件数
    * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
    */
-  async getVaccines(prefectureCode: number): Promise<VaccineEntity[]> {
+  async getVaccines(
+    prefectureCode: number,
+    count: number,
+  ): Promise<VaccineEntity[]> {
     return (
       await this.fireStoreConfig
         .getVaccination()
         .withConverter(this.VACCINE_CONVERTER)
         .where('prefecture', '==', prefectureCode)
         .orderBy('date', 'desc')
-        .limit(90)
+        .limit(count)
         .get()
     ).docs.map((doc) => doc.data());
   }
