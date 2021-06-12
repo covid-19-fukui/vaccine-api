@@ -1,9 +1,16 @@
 {
   "indexes": [
     {
-      "vaccination": [
+      "collectionGroup": "requests",
+      "queryScope": "COLLECTION",
+      "fields": [
         {
-          "fukui-2021-06-08": {}
+          "fieldPath": "prefecutre",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "DESCENDING"
         }
       ]
     }
