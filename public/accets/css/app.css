@@ -33,7 +33,7 @@ button:hover {
   text-decoration: none;
 }
 header {
-  background-image: url(./accets/img/header.svg);
+  background-image: url(/accets/img/header.svg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
   display: flex;
@@ -41,7 +41,7 @@ header {
   width: 100%;
 }
 footer {
-  background-image: url(./accets/img/footer.svg);
+  background-image: url(/accets/img/footer.svg);
   background-size: 100% 100%;
   display: flex;
   background-repeat: no-repeat;
@@ -110,19 +110,19 @@ footer {
   font-family: "Futura-CondensedMedium";
   font-style: normal;
   font-weight: 500;
-  src: url("./accets/fonts/futura.otf") format("truetype");
+  src: url("/accets/fonts/futura.otf") format("truetype");
 }
 
 @font-face {
   font-family: "Futura-Bold";
   font-style: normal;
   font-weight: 700;
-  src: url("./accets/fonts/unicode.futurab.ttf") format("truetype");
+  src: url("/accets/fonts/unicode.futurab.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Futura-Medium";
   font-style: normal;
   font-weight: 500;
-  src: url("./accets/fonts/futura.otf") format("opentype");
+  src: url("/accets/fonts/futura.otf") format("opentype");
 }
