@@ -47,6 +47,12 @@ footer {
   background-repeat: no-repeat;
   height: 150px;
   width: 100%;
+  justify-content: space-between;
+  flex-direction: row-reverse !important;
+}
+.copyright {
+  align-self: flex-end;
+  color: var(--white);
 }
 .message {
   color: var(--black-3);
