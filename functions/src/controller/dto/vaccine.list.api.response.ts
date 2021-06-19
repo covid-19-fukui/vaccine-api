@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import InfoResponse from './info.response';
 import VaccineResponse from './vaccine.response';
+
 /**
  * ユーザ取得APIのレスポンス
  */

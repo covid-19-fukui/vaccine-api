@@ -2,7 +2,7 @@ import { Controller, Get, Param, Query, UseFilters } from '@nestjs/common';
 import { HttpExceptionFilter } from './http.exception.filter';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import VaccineListApiResponse from './dto/vaccine.list.api.response';
-import VaccineParamter from './dto/vaccine.paramter';
+import VaccineParameter from './dto/vaccineParameter';
 import { VaccineService } from '../service/vaccine.service';
 import VaccineApiResponse from './dto/vaccine.api.response';
 import VaccineQuery from './dto/vaccine.query';
@@ -20,10 +20,11 @@ export class VaccineController {
    * @param {VaccineService} vaccineService サービス
    */
   constructor(private readonly vaccineService: VaccineService) {}
+
   /**
    * ワクチン接種状況の検索
    *
-   * @param {VaccineParamter} paramter パラメータ
+   * @param {VaccineQuery} query パラメータ
    * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況のレスポンス
    */
   @Get('search')
@@ -41,7 +42,7 @@ export class VaccineController {
   /**
    * ワクチン接種状況の取得
    *
-   * @param {VaccineParamter} paramter パラメータ
+   * @param {VaccineParameter} parameter パラメータ
    * @returns {Promise<VaccineListApiResponse>} ワクチン接種状況のレスポンス
    */
   @Get(':prefectureCode/:date')
@@ -52,11 +53,11 @@ export class VaccineController {
     type: VaccineApiResponse,
   })
   async getVaccine(
-    @Param() paramter: VaccineParamter,
+    @Param() parameter: VaccineParameter,
   ): Promise<VaccineApiResponse> {
     return this.vaccineService.getVaccine(
-      paramter.prefectureCode,
-      paramter.date,
+      parameter.prefectureCode,
+      parameter.date,
     );
   }
 }

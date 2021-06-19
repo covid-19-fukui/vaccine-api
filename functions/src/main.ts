@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { VaccineModule } from './vaccine.module';
 
@@ -22,4 +22,6 @@ async function bootstrap() {
 
   await app.listen(5001);
 }
-bootstrap();
+
+// eslint-disable-next-line no-void
+void bootstrap();

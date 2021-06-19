@@ -81,7 +81,7 @@ export class VaccineFireStoreRepository {
   /**
    * ワクチン接種状況の一覧取得
    *
-   * @param {number} prefetcureCode 都道府県コード
+   * @param {number} prefectureCode 都道府県コード
    * @param {number} count 取得件数
    * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
    */
@@ -103,7 +103,7 @@ export class VaccineFireStoreRepository {
   /**
    * ワクチン接種状況の取得
    *
-   * @param {number} prefetcureCode 都道府県コード
+   * @param {number} prefectureCode 都道府県コード
    * @param {Date} date 日付
    * @returns {Promise<VaccineEntity[]>} firestoreのレスポンス
    */

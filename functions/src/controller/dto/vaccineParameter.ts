@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsNotEmpty, IsNumberString } from 'class-validator';
 
-export default class VaccineParamter {
+export default class VaccineParameter {
   @ApiProperty({ example: 18, description: '都道府県コード(福井県のみ対応)' })
   @IsNotEmpty()
   @IsNumberString()
