@@ -14,7 +14,10 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "strict": true,
-    "typeRoots": ["src/@types", "node_modules/@types"]
+    "typeRoots": [
+      "src/@types",
+      "node_modules/@types"
+    ]
   },
   "compileOnSave": true
 }
